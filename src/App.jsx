@@ -23,34 +23,51 @@ const list = [
         objectID: 1,
     },
 ];
-function App() {
+const App = () => {
   return (
       <div>
-        <h1> {welcome.greeting} {welcome.title} {welcome.where} </h1>
-        <label htmlFor={"search"}>Search: </label>
-        <input id="search" type={"text"}/>
-      <hr />
-      <ul style={{ 
-        listStyle: "none", 
-        padding: 0,
-        textAlign: "left",
-        display: "flex",
-        flexDirection: "column",
-        gap: "10px"
-      }}>
-          {list.map(function (item) {
-              return (
-                <li key={item.objectID}>
-                    <a href={item.url}>Title: {item.title}</a>
-                    <div>Author: {item.author}</div>
-                    <div>Comments: {item.num_comments}</div>
-                    <div>Points: {item.points}</div>
-                </li>
-            );
-          })}
-      </ul>
+        <h1>{welcome.greeting} {welcome.title}</h1>
+
+        <Search />
+
+        <hr />
+
+        <List />
       </div>
   );
 }
 
+const  Search = () => {
+    return (
+        <div>
+            <label htmlFor={"search"}>Search: </label>
+            <input id="search" type={"text"}/>
+        </div>
+    );
+}
+
+const List = () => {
+    return (
+        <ul style={{
+          listStyle: "none",
+          padding: 0,
+          textAlign: "left",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px"
+        }}>
+          {list.map(function (item) {
+            return (
+                <li key={item.objectID}>
+                  <a href={item.url}>Title: {item.title}</a>
+                  <div>Author: {item.author}</div>
+                  <div>Comments: {item.num_comments}</div>
+                  <div>Points: {item.points}</div>
+                </li>
+            );
+          })}
+        </ul>
+    );
+
+}
 export default App;
